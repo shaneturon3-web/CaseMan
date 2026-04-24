@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "caseman"
+version = "0.1.0"
+description = "CaseMan — multi-case evidence workspace (§11 layout) under CASEMAN_ROOT"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+caseman = "caseman.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.entry-points."caseman.plugins"]
+collision = "caseman.plugins.collision:register"
+comms = "caseman.plugins.comms:register"
+compose = "caseman.plugins.compose:register"
+crosscase = "caseman.plugins.crosscase:register"
+graph = "caseman.plugins.timeline_graph:register"
+hierarchy = "caseman.plugins.hierarchy:register"
+ingestion = "caseman.plugins.ingestion:register"
+mail = "caseman.plugins.email_ingest:register"
+outputs = "caseman.plugins.outputs:register"
+reports = "caseman.plugins.case_ledger:register"
+safewrite = "caseman.plugins.safewrite:register"
+
+[tool.hatch.build.targets.sdist]
+include = ["caseman", "README.md", "pyproject.toml", ".cursor"]

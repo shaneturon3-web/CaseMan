@@ -1,0 +1,12 @@
+---
+description: CaseMan — multi-case evidence engine; use caseman CLI for WORKING_DIRECTORY
+globs: "**/*"
+---
+
+# CaseMan agent rules
+
+- **Do not** assume `~/Case_Vault` or `~/Inbox_Genius` (legacy). Evidence work is under **`CASEMAN_ROOT`** (default `~/CaseMan`) per matter.
+- **Before** intake, synthesis, or file moves, run: `caseman status` and/or `caseman validate`. If validation fails, stop; do not write evidence into a matter that fails §11.14.
+- The active matter’s path is: `caseman active` and `$(caseman env)` / `CASEMAN_WORKING_DIRECTORY` after `source <(caseman env)` (or `eval` exports).
+- Cross-matter work requires explicit `project_id` or `CASEMAN_ACTIVE_MATTER` changes; no silent mixing.
+- The Master Evidence Engine prompt (if provided in the session) governs *reasoning*; **filesystem** truth is the matter’s `WORKING_DIRECTORY` and `Inbox_Genius` there only.
